@@ -1,7 +1,8 @@
+
 Talamis - Language Learning Web Application
 A modern, responsive web application designed to help users master new languages through daily lessons, audio practice, and interactive tracking. Built with Angular (Standalone Components, Signals) and a robust .NET backend architecture.
 
-![Talamis Dashboard Preview](./assets/Talamis.png)
+<img width="1273" height="832" alt="Talamis" src="https://github.com/user-attachments/assets/d86c0ec2-2b94-4abf-bfe9-0d5a15b07ff4" />
 
 ✨ Features:
 Interactive Dashboard: Dynamic greeting utilizing Angular computed signals, streak counters, and daily progress visualization.
