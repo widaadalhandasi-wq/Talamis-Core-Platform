@@ -1,0 +1,81 @@
+<div
+  class="flex flex-col items-center justify-center min-h-dvh w-full px-6"
+  style="background: rgb(248,249,250);"
+>
+  <div class="w-full max-w-[390px] flex flex-col gap-6">
+    <div class="flex flex-col items-center gap-1">
+      <h1 class="text-[22px] font-bold text-[#000666]">Talamis</h1>
+      <p class="text-[14px] text-[#767683]">
+        {{ mode() === 'login' ? 'Welcome back' : 'Create your account' }}
+      </p>
+    </div>
+
+    <form
+      class="flex flex-col gap-4 bg-white rounded-[24px] p-6 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.05),0px_1px_2px_0px_rgba(0,0,0,0.1)]"
+      (ngSubmit)="submit()"
+    >
+      @if (mode() === 'register') {
+        <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
+          Full name
+          <input
+            type="text"
+            name="fullName"
+            required
+            [ngModel]="fullName()"
+            (ngModelChange)="fullName.set($event)"
+            class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+          />
+        </label>
+      }
+
+      <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
+        Email
+        <input
+          type="email"
+          name="email"
+          required
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+          class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+        />
+      </label>
+
+      <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
+        Password
+        <input
+          type="password"
+          name="password"
+          required
+          minlength="8"
+          [ngModel]="password()"
+          (ngModelChange)="password.set($event)"
+          class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+        />
+      </label>
+
+      @if (errorMessage()) {
+        <p class="text-[13px] text-red-600">{{ errorMessage() }}</p>
+      }
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting()"
+        class="rounded-[9999px] bg-[#000666] text-white text-[14px] font-medium py-3 disabled:opacity-50"
+      >
+        {{ isSubmitting() ? 'Please wait…' : mode() === 'login' ? 'Log in' : 'Sign up' }}
+      </button>
+    </form>
+
+    <button
+      type="button"
+      (click)="toggleMode()"
+      class="text-[13px] text-[#767683] text-center"
+    >
+      {{
+        mode() === 'login'
+          ? "Don't have an account? Sign up"
+          : 'Already have an account? Log in'
+      }}
+    </button>
+  </div>
+</div>
