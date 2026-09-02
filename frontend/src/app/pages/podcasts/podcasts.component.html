@@ -1,383 +1,252 @@
-<div class="content-stretch flex items-start justify-center relative size-full" style="background-image: linear-gradient(90deg, rgb(248, 249, 250) 0%, rgb(248, 249, 250) 100%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);" data-name="Podcasts">
-      <div class="bg-[#f8f9fa] flex-[1_0_0] min-h-[780px] min-w-px relative self-stretch" data-name="Main Content Area">
-      <div class="content-stretch flex flex-col items-start min-h-[inherit] pb-[16px] pt-[64px] px-[16px] relative size-full">
-        <div class="content-stretch flex flex-col gap-[32px] items-start max-w-[1152px] relative shrink-0 w-full" data-name="Container">
-      <div class="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full" data-name="Header">
-      <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Heading 2">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#1a237e] text-[28px] w-full">
-        <p class="leading-[36px]">Language Podcasts</p>
+<div class="podcasts-wrapper">
+  
+  <!-- رأس الصفحة مع فلتر التصنيفات -->
+  <header class="podcasts-header">
+    <div class="header-main-row">
+      <div>
+        <h2 class="podcasts-title">Language Podcasts & Audio Series</h2>
+        <p class="podcasts-subtitle">
+          Authentic conversations across business, culture, everyday slang, and tech.
+        </p>
       </div>
+      <span class="episodes-badge">🎙️ {{ allEpisodes().length }} Full Episodes</span>
     </div>
-      <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[16px] tracking-[0.5px] w-full">
-        <p class="leading-[24px] mb-0">Immerse yourself in authentic conversations</p>
-        <p class="leading-[24px]">and improve your listening skills.</p>
-      </div>
+
+    <!-- شريط الفئات -->
+    <div class="category-filter-bar">
+      @for (cat of categories; track cat) {
+        <button
+          type="button"
+          class="category-pill"
+          [class.active]="selectedCategory() === cat"
+          (click)="setCategory(cat)"
+        >
+          {{ cat }}
+        </button>
+      }
     </div>
-    </div>
-      <div class="bg-[#f8f9fa] relative rounded-[24px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.05),0px_1px_2px_0px_rgba(0,0,0,0.1)] shrink-0 w-full" data-name="Section - Now Playing Bento Card">
-      <div class="overflow-clip rounded-[inherit] size-full">
-        <div class="content-stretch flex flex-col items-start p-[24px] relative size-full">
-          <div class="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[rgba(255,255,255,0)] content-stretch flex flex-col items-start justify-center overflow-clip relative rounded-[16px] shadow-[0px_4px_8px_0px_rgba(0,0,0,0.08)] shrink-0 w-full" data-name="Cover Art">
-      <div class="h-[310px] relative shrink-0 w-full" data-name="AB6AXuDEQ_U9a90shHU_sspcTdc0tS_iRfP4ttzVn21wZaDOf09yqr2sMAAaVr9TT7z8CKRuKeR6F5Tu4PiFfghtexYmxvk_0ka-TpK2rR9bZ2keISLY2CUOZn0-Vil_q2HigsLP53zj01KZsNjKayBetd4z3wneAjLoBKFMcBp9m2x79T8dJ2T3bIPZtFBkMSOAZXUdsZxlf4lsFMAcLGMLrVvbRWD8_Zxbob7TNsKHjrMVoN4vBkTYEb-uVQ">
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <img alt="" class="absolute left-0 max-w-none size-full top-0" src="assets/podcast-cover.png" />
-      </div>
-    </div>
-      <div class="absolute bg-gradient-to-t content-stretch flex from-[rgba(0,6,102,0.8)] inset-0 items-end p-[16px] to-[rgba(0,6,102,0)]" data-name="Background">
-      <div class="backdrop-blur-[6px] bg-[rgba(248,249,250,0.2)] content-stretch flex gap-[8px] items-center px-[12px] py-[4px] relative rounded-[9999px] shrink-0" data-name="Overlay+OverlayBlur">
-      <div class="bg-[#6bfe9c] relative rounded-[9999px] shrink-0 size-[8px]" data-name="Background" ></div>
-      <div class="content-stretch flex flex-col items-start relative shrink-0" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[11px] text-white tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">Now Playing</p>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" data-name="Details & Controls">
-      <div class="content-stretch flex flex-col items-start pb-[8px] relative shrink-0 w-full" data-name="Margin">
-      <div class="content-stretch flex gap-[4px] items-center relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[#e1e3e4] content-stretch flex flex-col items-start px-[8px] py-[4px] relative rounded-[4px] shrink-0" data-name="Background">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">Advanced C1</p>
-      </div>
-    </div>
-      <div class="bg-[#b8efce] content-stretch flex flex-col items-start px-[8px] py-[4px] relative rounded-[4px] shrink-0" data-name="Background">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#002012] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">Business</p>
-      </div>
-    </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-start pb-[4px] relative shrink-0 w-full" data-name="Heading 3:margin">
-      <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Heading 3">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#1a237e] text-[22px] w-full">
-        <p class="leading-[28px]">Navigating Corporate Culture</p>
-      </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-start pb-[24px] relative shrink-0 w-full" data-name="Margin">
-      <div class="content-stretch flex flex-col items-start overflow-clip relative shrink-0 w-full" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[14px] tracking-[0.25px] w-full">
-        <p class="leading-[20px] mb-0">Learn the subtle linguistic nuances required</p>
-        <p class="leading-[20px]">to thrive in international business meetings.</p>
-      </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col h-[72px] items-start pb-[24px] relative shrink-0 w-full" data-name="Interactive Waveform (Simulated):margin">
-      <div class="bg-[#f3f4f5] h-[48px] relative rounded-[8px] shrink-0 w-full" data-name="Interactive Waveform (Simulated)">
-      <div class="flex flex-row items-center justify-center size-full">
-        <div class="content-stretch flex gap-[4px] items-center justify-center p-[8px] relative size-full">
-          <div class="bg-[rgba(0,6,102,0.3)] h-full relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Overlay" ></div>
-          <div class="bg-[rgba(0,6,102,0.4)] h-[25.59px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Overlay" ></div>
-          <div class="bg-[rgba(0,6,102,0.5)] h-[19.19px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Overlay" ></div>
-          <div class="bg-[rgba(0,6,102,0.6)] h-[28.8px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Overlay" ></div>
-          <div class="bg-[#000666] h-[12.8px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Active Section" ></div>
-          <div class="bg-[#000666] h-[22.39px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#000666] h-full relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#000666] h-[16px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#000666] h-[25.59px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#000666] h-[9.59px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#e1e3e4] h-[19.19px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Remaining Section" ></div>
-          <div class="bg-[#e1e3e4] h-[12.8px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#e1e3e4] h-[25.59px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#e1e3e4] h-[16px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
-          <div class="bg-[#e1e3e4] h-[9.59px] relative rounded-tl-[9999px] rounded-tr-[9999px] shrink-0 w-[6px]" data-name="Background" ></div>
+  </header>
+
+  <!-- مشغل البودكاست الرئيسي Bento Card -->
+  @if (activeEpisode(); as current) {
+    <section class="now-playing-card">
+      
+      <!-- الغلاف -->
+      <div class="cover-art-container">
+        <div class="cover-art-inner">
+          <div class="cover-placeholder">
+            <span class="cover-icon">🎙️</span>
+            <span class="cover-series-pill">{{ current.series }}</span>
+            <span class="cover-speaker">{{ current.speaker }}</span>
+          </div>
+
+          <div class="cover-overlay">
+            <div class="now-playing-pill">
+              <span class="pulse-dot" [class.active]="isPlaying()"></span>
+              <span class="pill-label">{{ isPlaying() ? 'Playing Audio' : 'Audio Paused' }}</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-      <div class="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Player Controls">
-      <div class="content-stretch flex flex-col items-start relative shrink-0" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">12:45</p>
-      </div>
-    </div>
-      <div class="content-stretch flex gap-[8px] items-center relative shrink-0" data-name="Container">
-      <div class="content-stretch flex flex-col items-center justify-center pb-[16px] pt-[8px] px-[8px] relative shrink-0" data-name="Button">
-      <div class="h-[21px] relative shrink-0 w-[18px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="21" preserveAspectRatio="none" viewBox="0 0 18 21" width="18">
-        <g id="Container">
-          <path d="M9 21C7.75 21 6.57917 20.7625 5.4875 20.2875C4.39583 19.8125 3.44583 19.1708 2.6375 18.3625C1.82917 17.5542 1.1875 16.6042 0.7125 15.5125C0.2375 14.4208 0 13.25 0 12H2C2 13.95 2.67917 15.6042 4.0375 16.9625C5.39583 18.3208 7.05 19 9 19C10.95 19 12.6042 18.3208 13.9625 16.9625C15.3208 15.6042 16 13.95 16 12C16 10.05 15.3208 8.39583 13.9625 7.0375C12.6042 5.67917 10.95 5 9 5H8.85L10.4 6.55L9 8L5 4L9 0L10.4 1.45L8.85 3H9C10.25 3 11.4208 3.2375 12.5125 3.7125C13.6042 4.1875 14.5542 4.82917 15.3625 5.6375C16.1708 6.44583 16.8125 7.39583 17.2875 8.4875C17.7625 9.57917 18 10.75 18 12C18 13.25 17.7625 14.4208 17.2875 15.5125C16.8125 16.6042 16.1708 17.5542 15.3625 18.3625C14.5542 19.1708 13.6042 19.8125 12.5125 20.2875C11.4208 20.7625 10.25 21 9 21V21M6 15V10.5H4.5V9H7.5V15H6V15M9.5 15C9.21667 15 8.97917 14.9042 8.7875 14.7125C8.59583 14.5208 8.5 14.2833 8.5 14V10C8.5 9.71667 8.59583 9.47917 8.7875 9.2875C8.97917 9.09583 9.21667 9 9.5 9H11.5C11.7833 9 12.0208 9.09583 12.2125 9.2875C12.4042 9.47917 12.5 9.71667 12.5 10V14C12.5 14.2833 12.4042 14.5208 12.2125 14.7125C12.0208 14.9042 11.7833 15 11.5 15H9.5V15M10 13.5H11V13.5V13.5V10.5V10.5V10.5H10V10.5V10.5V13.5V13.5V13.5V13.5" fill="#454652" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="bg-[#000666] content-stretch drop-shadow-[0px_4px_4px_rgba(0,0,0,0.08)] flex items-center justify-center relative rounded-[9999px] shrink-0 size-[48px]" data-name="Button">
-      <div class="h-[14px] relative shrink-0 w-[12px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="14" preserveAspectRatio="none" viewBox="0 0 12 14" width="12">
-        <g id="Container">
-          <path d="M8 14V0H12V14H8V14M0 14V0H4V14H0V14" fill="white" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-center justify-center pb-[16px] pt-[8px] px-[8px] relative shrink-0" data-name="Button">
-      <div class="h-[21px] relative shrink-0 w-[18px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="21" preserveAspectRatio="none" viewBox="0 0 18 21" width="18">
-        <g id="Container">
-          <path d="M6 15V10.5H4.5V9H7.5V15H6V15M9.5 15C9.21667 15 8.97917 14.9042 8.7875 14.7125C8.59583 14.5208 8.5 14.2833 8.5 14V10C8.5 9.71667 8.59583 9.47917 8.7875 9.2875C8.97917 9.09583 9.21667 9 9.5 9H11.5C11.7833 9 12.0208 9.09583 12.2125 9.2875C12.4042 9.47917 12.5 9.71667 12.5 10V14C12.5 14.2833 12.4042 14.5208 12.2125 14.7125C12.0208 14.9042 11.7833 15 11.5 15H9.5V15M10 13.5H11V13.5V13.5V10.5V10.5V10.5H10V10.5V10.5V13.5V13.5V13.5V13.5M9 21C7.75 21 6.57917 20.7625 5.4875 20.2875C4.39583 19.8125 3.44583 19.1708 2.6375 18.3625C1.82917 17.5542 1.1875 16.6042 0.7125 15.5125C0.2375 14.4208 0 13.25 0 12C0 10.75 0.2375 9.57917 0.7125 8.4875C1.1875 7.39583 1.82917 6.44583 2.6375 5.6375C3.44583 4.82917 4.39583 4.1875 5.4875 3.7125C6.57917 3.2375 7.75 3 9 3H9.15L7.6 1.45L9 0L13 4L9 8L7.6 6.55L9.15 5H9C7.05 5 5.39583 5.67917 4.0375 7.0375C2.67917 8.39583 2 10.05 2 12C2 13.95 2.67917 15.6042 4.0375 16.9625C5.39583 18.3208 7.05 19 9 19C10.95 19 12.6042 18.3208 13.9625 16.9625C15.3208 15.6042 16 13.95 16 12H18C18 13.25 17.7625 14.4208 17.2875 15.5125C16.8125 16.6042 16.1708 17.5542 15.3625 18.3625C14.5542 19.1708 13.6042 19.8125 12.5125 20.2875C11.4208 20.7625 10.25 21 9 21V21" fill="#454652" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-start relative shrink-0" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">45:00</p>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+      <!-- التفاصيل وأدوات التحكم -->
+      <div class="details-and-controls">
+        
+        <!-- الوسوم -->
+        <div class="tags-row">
+          <span class="tag-level">{{ current.level }}</span>
+          <span class="tag-category">{{ current.category }}</span>
         </div>
-      </div>
-    </div>
-      <div class="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-name="Section - Episodes Grid">
-      <div class="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Container">
-      <div class="content-stretch flex flex-col items-start relative shrink-0" data-name="Heading 3">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#1a237e] text-[22px] whitespace-nowrap">
-        <p class="leading-[28px]">Up Next</p>
-      </div>
-    </div>
-      <div class="content-stretch flex flex-col items-center justify-center relative shrink-0" data-name="Button">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#006d37] text-[14px] text-center tracking-[0.1px] whitespace-nowrap">
-        <p class="leading-[20px]">View All</p>
-      </div>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col gap-[24px] items-start relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[#f8f9fa] drop-shadow-[0px_1px_1.5px_rgba(0,0,0,0.05),0px_1px_1px_rgba(0,0,0,0.1)] relative rounded-[24px] shrink-0 w-full" data-name="Article - Episode Card 1">
-      <div aria-hidden="true" class="absolute border border-[rgba(0,0,0,0)] border-solid inset-0 pointer-events-none rounded-[24px]" ></div>
-      <div class="content-stretch flex flex-col items-start justify-between p-[25px] relative size-full">
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[16px] relative size-full">
-        <div class="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[#edeeef] content-stretch flex items-center justify-center overflow-clip relative rounded-[12px] shrink-0 size-[64px]" data-name="Background">
-      <div class="relative shrink-0 size-[25px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="25" preserveAspectRatio="none" viewBox="0 0 25 25" width="25">
-        <g id="Container">
-          <path d="M12.5 25C10.7708 25 9.14583 24.6719 7.625 24.0156C6.10417 23.3594 4.78125 22.4688 3.65625 21.3438C2.53125 20.2188 1.64062 18.8958 0.984375 17.375C0.328125 15.8542 0 14.2292 0 12.5C0 10.7708 0.328125 9.14583 0.984375 7.625C1.64062 6.10417 2.53125 4.78125 3.65625 3.65625C4.78125 2.53125 6.10417 1.64062 7.625 0.984375C9.14583 0.328125 10.7708 0 12.5 0C14.2292 0 15.8542 0.328125 17.375 0.984375C18.8958 1.64062 20.2188 2.53125 21.3438 3.65625C22.4688 4.78125 23.3594 6.10417 24.0156 7.625C24.6719 9.14583 25 10.7708 25 12.5C25 14.2292 24.6719 15.8542 24.0156 17.375C23.3594 18.8958 22.4688 20.2188 21.3438 21.3438C20.2188 22.4688 18.8958 23.3594 17.375 24.0156C15.8542 24.6719 14.2292 25 12.5 25V25M11.25 22.4375V20C10.5625 20 9.97396 19.7552 9.48438 19.2656C8.99479 18.776 8.75 18.1875 8.75 17.5V16.25L2.75 10.25C2.6875 10.625 2.63021 11 2.57812 11.375C2.52604 11.75 2.5 12.125 2.5 12.5C2.5 15.0208 3.32812 17.2292 4.98438 19.125C6.64062 21.0208 8.72917 22.125 11.25 22.4375V22.4375M19.875 19.25C20.7292 18.3125 21.3802 17.2656 21.8281 16.1094C22.276 14.9531 22.5 13.75 22.5 12.5C22.5 10.4583 21.9323 8.59375 20.7969 6.90625C19.6615 5.21875 18.1458 4 16.25 3.25V3.75C16.25 4.4375 16.0052 5.02604 15.5156 5.51562C15.026 6.00521 14.4375 6.25 13.75 6.25H11.25V8.75C11.25 9.10417 11.1302 9.40104 10.8906 9.64062C10.651 9.88021 10.3542 10 10 10H7.5V12.5H15C15.3542 12.5 15.651 12.6198 15.8906 12.8594C16.1302 13.099 16.25 13.3958 16.25 13.75V17.5H17.5C18.0417 17.5 18.5312 17.6615 18.9688 17.9844C19.4062 18.3073 19.7083 18.7292 19.875 19.25V19.25" fill="#767683" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="bg-[#e7e8e9] content-stretch flex flex-col items-start px-[8px] py-[4px] relative rounded-[4px] shrink-0" data-name="Background">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">28 min</p>
-      </div>
-    </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Heading 4:margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[4px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Heading 4">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#191c1d] text-[22px] w-full">
-        <p class="leading-[28px]">Cultural Nuances</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[24px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[14px] tracking-[0.25px] w-full">
-        <p class="leading-[20px] mb-0">Understanding the unspoken rules of</p>
-        <p class="leading-[20px]">etiquette in different regions.</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="HorizontalBorder">
-      <div aria-hidden="true" class="absolute border-[#e1e3e4] border-solid border-t inset-0 pointer-events-none" ></div>
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-between pt-[9px] relative size-full">
-        <div class="bg-[rgba(107,254,156,0.2)] relative rounded-[4px] shrink-0" data-name="Overlay">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start px-[8px] py-[4px] relative size-full">
-        <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#006d37] text-[11px] tracking-[0.5px] whitespace-nowrap">
-          <p class="leading-[16px]">Intermediate B1</p>
+
+        <!-- العنوان والوصف -->
+        <h3 class="active-title">{{ current.title }}</h3>
+        <p class="active-desc">{{ current.description }}</p>
+
+        <!-- الموجة الصوتية -->
+        <div class="waveform-container">
+          <div class="waveform-bars">
+            <div class="bar bar-1 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-2 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-3 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-4 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-5 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-6 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-7 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-8 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-9 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-10 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-11 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-12 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-13 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-14 active" [class.animated]="isPlaying()"></div>
+            <div class="bar bar-15 active" [class.animated]="isPlaying()"></div>
+          </div>
         </div>
-      </div>
-    </div>
-        <div class="bg-[#e7e8e9] relative rounded-[9999px] shrink-0 size-[40px]" data-name="Button">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <div class="h-[14px] relative shrink-0 w-[11px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="14" preserveAspectRatio="none" viewBox="0 0 11 14" width="11">
-        <g id="Container">
-          <path d="M0 14V0L11 7L0 14V14" fill="#000666" id="Icon" />
-        </g>
-      </svg>
-    </div>
-      </div>
-    </div>
-      </div>
-    </div>
-      </div>
-    </div>
-      <div class="bg-[#f8f9fa] drop-shadow-[0px_1px_1.5px_rgba(0,0,0,0.05),0px_1px_1px_rgba(0,0,0,0.1)] relative rounded-[24px] shrink-0 w-full" data-name="Article - Episode Card 2">
-      <div aria-hidden="true" class="absolute border border-[rgba(0,0,0,0)] border-solid inset-0 pointer-events-none rounded-[24px]" ></div>
-      <div class="content-stretch flex flex-col items-start justify-between p-[25px] relative size-full">
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[16px] relative size-full">
-        <div class="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[#edeeef] content-stretch flex items-center justify-center overflow-clip relative rounded-[12px] shrink-0 size-[64px]" data-name="Background">
-      <div class="h-[23.75px] relative shrink-0 w-[25px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="23.75" preserveAspectRatio="none" viewBox="0 0 25 23.75" width="25">
-        <g id="Container">
-          <path d="M2.5 23.75C1.8125 23.75 1.22396 23.5052 0.734375 23.0156C0.244792 22.526 0 21.9375 0 21.25V7.5C0 6.8125 0.244792 6.22396 0.734375 5.73438C1.22396 5.24479 1.8125 5 2.5 5H7.5V2.5C7.5 1.8125 7.74479 1.22396 8.23438 0.734375C8.72396 0.244792 9.3125 0 10 0H15C15.6875 0 16.276 0.244792 16.7656 0.734375C17.2552 1.22396 17.5 1.8125 17.5 2.5V5H22.5C23.1875 5 23.776 5.24479 24.2656 5.73438C24.7552 6.22396 25 6.8125 25 7.5V21.25C25 21.9375 24.7552 22.526 24.2656 23.0156C23.776 23.5052 23.1875 23.75 22.5 23.75H2.5V23.75M2.5 21.25H22.5V21.25V21.25V7.5V7.5V7.5H2.5V7.5V7.5V21.25V21.25V21.25V21.25M10 5H15V2.5V2.5V2.5H10V2.5V2.5V5V5M2.5 21.25V21.25V21.25V7.5V7.5V7.5V7.5V7.5V7.5V21.25V21.25V21.25V21.25V21.25" fill="#767683" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="bg-[#e7e8e9] content-stretch flex flex-col items-start px-[8px] py-[4px] relative rounded-[4px] shrink-0" data-name="Background">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">35 min</p>
-      </div>
-    </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Heading 4:margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[4px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Heading 4">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#191c1d] text-[22px] w-full">
-        <p class="leading-[28px]">Business Phrases</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[24px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[14px] tracking-[0.25px] w-full">
-        <p class="leading-[20px] mb-0">Key vocabulary for writing professional</p>
-        <p class="leading-[20px]">emails and reports.</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="HorizontalBorder">
-      <div aria-hidden="true" class="absolute border-[#e1e3e4] border-solid border-t inset-0 pointer-events-none" ></div>
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-between pt-[9px] relative size-full">
-        <div class="bg-[rgba(107,254,156,0.2)] relative rounded-[4px] shrink-0" data-name="Overlay">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start px-[8px] py-[4px] relative size-full">
-        <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#006d37] text-[11px] tracking-[0.5px] whitespace-nowrap">
-          <p class="leading-[16px]">Advanced C2</p>
+
+        <!-- شريط التحكم الصوتي (يتضمن زر Stop الجديد) -->
+        <div class="player-controls">
+          <span class="time-label">{{ formatTime(currentTimeSec()) }}</span>
+
+          <div class="controls-group">
+            <!-- 1. ترجيع 10 ثواني -->
+            <button type="button" class="btn-ctrl-action" (click)="seek(-10)" title="Rewind 10s">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" />
+              </svg>
+            </button>
+
+            <!-- 2. زر التشغيل / الإيقاف المؤقت (Play / Pause) -->
+            <button type="button" class="btn-play-main" (click)="togglePlay()" [title]="isPlaying() ? 'Pause Audio' : 'Play Audio'">
+              @if (isPlaying()) {
+                <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                </svg>
+              } @else {
+                <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              }
+            </button>
+
+            <!-- 3. ⭐ زر التوقف التام (STOP & RESET) -->
+            <button type="button" class="btn-ctrl-stop" (click)="stopAudioCompletely()" title="Stop & Reset to Start">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <rect x="6" y="6" width="12" height="12" rx="2"/>
+              </svg>
+            </button>
+
+            <!-- 4. تقديم 10 ثواني -->
+            <button type="button" class="btn-ctrl-action" (click)="seek(10)" title="Forward 10s">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.933 12.8a1 1 0 000-1.6L6.6 7.2A1 1 0 005 8v8a1 1 0 001.6.8l5.333-4zM19.933 12.8a1 1 0 000-1.6l-5.333-4A1 1 0 0013 8v8a1 1 0 001.6.8l5.333-4z" />
+              </svg>
+            </button>
+          </div>
+
+          <span class="time-label">{{ formatTime(current.durationMinutes * 60) }}</span>
         </div>
-      </div>
-    </div>
-        <div class="bg-[#e7e8e9] relative rounded-[9999px] shrink-0 size-[40px]" data-name="Button">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <div class="h-[14px] relative shrink-0 w-[11px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="14" preserveAspectRatio="none" viewBox="0 0 11 14" width="11">
-        <g id="Container">
-          <path d="M0 14V0L11 7L0 14V14" fill="#000666" id="Icon" />
-        </g>
-      </svg>
-    </div>
-      </div>
-    </div>
-      </div>
-    </div>
-      </div>
-    </div>
-      <div class="bg-[#f8f9fa] drop-shadow-[0px_1px_1.5px_rgba(0,0,0,0.05),0px_1px_1px_rgba(0,0,0,0.1)] relative rounded-[24px] shrink-0 w-full" data-name="Article - Episode Card 3">
-      <div aria-hidden="true" class="absolute border border-[rgba(0,0,0,0)] border-solid inset-0 pointer-events-none rounded-[24px]" ></div>
-      <div class="content-stretch flex flex-col items-start justify-between p-[25px] relative size-full">
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[16px] relative size-full">
-        <div class="content-stretch flex items-start justify-between relative shrink-0 w-full" data-name="Container">
-      <div class="bg-[#edeeef] content-stretch flex items-center justify-center overflow-clip relative rounded-[12px] shrink-0 size-[64px]" data-name="Background">
-      <div class="relative shrink-0 size-[25px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="25" preserveAspectRatio="none" viewBox="0 0 25 25" width="25">
-        <g id="Container">
-          <path d="M0 25V2.5C0 1.8125 0.244792 1.22396 0.734375 0.734375C1.22396 0.244792 1.8125 0 2.5 0H22.5C23.1875 0 23.776 0.244792 24.2656 0.734375C24.7552 1.22396 25 1.8125 25 2.5V17.5C25 18.1875 24.7552 18.776 24.2656 19.2656C23.776 19.7552 23.1875 20 22.5 20H5L0 25V25M3.9375 17.5H22.5V17.5V17.5V2.5V2.5V2.5H2.5V2.5V2.5V18.9062L3.9375 17.5V17.5M2.5 17.5V17.5V2.5V2.5V2.5V2.5V2.5V2.5V17.5V17.5V17.5V17.5V17.5" fill="#767683" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="bg-[#e7e8e9] content-stretch flex flex-col items-start px-[8px] py-[4px] relative rounded-[4px] shrink-0" data-name="Background">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[11px] tracking-[0.5px] whitespace-nowrap">
-        <p class="leading-[16px]">15 min</p>
-      </div>
-    </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Heading 4:margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[4px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Heading 4">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#191c1d] text-[22px] w-full">
-        <p class="leading-[28px]">Street Slang</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="Margin">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[24px] relative size-full">
-        <div class="content-stretch flex flex-col items-start relative shrink-0 w-full" data-name="Container">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#454652] text-[14px] tracking-[0.25px] w-full">
-        <p class="leading-[20px] mb-0">Sound more like a native by learning</p>
-        <p class="leading-[20px]">common colloquialisms and slang.</p>
-      </div>
-    </div>
-      </div>
-    </div>
-        <div class="relative shrink-0 w-full" data-name="HorizontalBorder">
-      <div aria-hidden="true" class="absolute border-[#e1e3e4] border-solid border-t inset-0 pointer-events-none" ></div>
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-between pt-[9px] relative size-full">
-        <div class="bg-[rgba(107,254,156,0.2)] relative rounded-[4px] shrink-0" data-name="Overlay">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start px-[8px] py-[4px] relative size-full">
-        <div class="[word-break:break-word] flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] not-italic relative shrink-0 text-[#006d37] text-[11px] tracking-[0.5px] whitespace-nowrap">
-          <p class="leading-[16px]">Beginner A2</p>
+
+        <!-- شريط السرعة والنصوص -->
+        <div class="speed-and-transcript-bar">
+          <div class="speed-selector">
+            <span class="speed-label">Speed:</span>
+            @for (spd of [0.8, 1.0, 1.25, 1.5]; track spd) {
+              <button
+                type="button"
+                class="btn-speed"
+                [class.active]="playbackSpeed() === spd"
+                (click)="setSpeed(spd)"
+              >
+                {{ spd }}x
+              </button>
+            }
+          </div>
+
+          <button type="button" class="btn-toggle-transcript" (click)="toggleTranscript()">
+            {{ showTranscript() ? '📖 Hide Transcript' : '📖 Read Full Transcript' }}
+          </button>
         </div>
+
+        <!-- تظليل النص الحي المتزامن -->
+        @if (showTranscript()) {
+          <div class="transcript-box">
+            <div class="transcript-header">
+              <span class="transcript-title">Live Narrated Script</span>
+              <span class="transcript-counter">
+                Sentence {{ currentSentenceIndex() + 1 }} of {{ current.transcript.length }}
+              </span>
+            </div>
+            <div class="transcript-body">
+              @for (sentence of current.transcript; track $index) {
+                <p
+                  class="transcript-line"
+                  [class.active-line]="isPlaying() && currentSentenceIndex() === $index"
+                  (click)="playSentence($index)"
+                >
+                  {{ sentence }}
+                </p>
+              }
+            </div>
+          </div>
+        }
+
       </div>
+
+    </section>
+  }
+
+  <!-- قائمة الحلقات القادمة (Up Next) -->
+  <section class="episodes-grid-section">
+    <div class="section-header-row">
+      <h3 class="section-heading">
+        {{ selectedCategory() === 'All Types' ? 'All Episodes' : selectedCategory() + ' Episodes' }}
+      </h3>
+      <span class="episodes-count">{{ filteredEpisodes().length }} Episodes Available</span>
     </div>
-        <div class="bg-[#e7e8e9] relative rounded-[9999px] shrink-0 size-[40px]" data-name="Button">
-      <div class="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <div class="h-[14px] relative shrink-0 w-[11px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="14" preserveAspectRatio="none" viewBox="0 0 11 14" width="11">
-        <g id="Container">
-          <path d="M0 14V0L11 7L0 14V14" fill="#000666" id="Icon" />
-        </g>
-      </svg>
+
+    <div class="episodes-list">
+      @for (episode of upNextEpisodes(); track episode.id) {
+        <article class="episode-item-card" (click)="togglePlay(episode)">
+          
+          <div class="episode-item-top">
+            <div class="icon-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#767683" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
+              </svg>
+            </div>
+            <div class="badge-group">
+              <span class="badge-category">{{ episode.category }}</span>
+              <span class="badge-duration">{{ episode.durationMinutes }} min</span>
+            </div>
+          </div>
+
+          <div class="episode-item-body">
+            <h4 class="episode-title-text">{{ episode.title }}</h4>
+            <p class="episode-desc-text">{{ episode.description }}</p>
+          </div>
+
+          <div class="episode-item-footer">
+            <span class="badge-level">{{ episode.level }}</span>
+            
+            <div class="card-actions-group" (click)="$event.stopPropagation()">
+              <!-- زر تشغيل/إيقاف مؤقت للبطاقة -->
+              <button 
+                type="button" 
+                class="btn-play-circle" 
+                (click)="togglePlay(episode)"
+                [title]="isPlaying() && activeEpisode().id === episode.id ? 'Pause' : 'Play'"
+              >
+                @if (isPlaying() && activeEpisode().id === episode.id) {
+                  <svg width="14" height="14" fill="#000666" viewBox="0 0 24 24">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                  </svg>
+                } @else {
+                  <svg width="14" height="14" fill="#000666" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                }
+              </button>
+
+              <!-- زر إيقاف تام للبطاقة -->
+              @if (isPlaying() && activeEpisode().id === episode.id) {
+                <button 
+                  type="button" 
+                  class="btn-stop-circle" 
+                  (click)="stopAudioCompletely()"
+                  title="Stop"
+                >
+                  <svg width="12" height="12" fill="#c5221f" viewBox="0 0 24 24">
+                    <rect x="5" y="5" width="14" height="14" rx="2"/>
+                  </svg>
+                </button>
+              }
+            </div>
+          </div>
+
+        </article>
+      }
     </div>
-      </div>
-    </div>
-      </div>
-    </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-      </div>
-    </div>
-      <div class="absolute bg-[#f8f9fa] content-stretch flex h-[64px] items-center justify-between left-0 px-[16px] top-0 w-[390px]" data-name="Header - Top App Bar (Mobile)">
-      <div class="content-stretch flex flex-col items-center justify-center pb-[16px] pt-[8px] px-[8px] relative rounded-[9999px] shrink-0" data-name="Button">
-      <div class="h-[12px] relative shrink-0 w-[18px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="12" preserveAspectRatio="none" viewBox="0 0 18 12" width="18">
-        <g id="Container">
-          <path d="M0 12V10H18V12H0V12M0 7V5H18V7H0V7M0 2V0H18V2H0V2" fill="#454652" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-      <div class="content-stretch flex flex-col items-start relative shrink-0" data-name="Heading 1">
-      <div class="[word-break:break-word] flex flex-col font-['Inter:Bold',sans-serif] font-bold justify-center leading-[0] not-italic relative shrink-0 text-[#000666] text-[22px] whitespace-nowrap">
-        <p class="leading-[28px]">Talamis</p>
-      </div>
-    </div>
-      <div class="content-stretch flex flex-col items-center justify-center pb-[16px] pt-[8px] px-[8px] relative rounded-[9999px] shrink-0" data-name="Button">
-      <div class="h-[20px] relative shrink-0 w-[16px]" data-name="Container">
-      <svg class="absolute block inset-0 size-full" fill="none" height="20" preserveAspectRatio="none" viewBox="0 0 16 20" width="16">
-        <g id="Container">
-          <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0V17M8 9.5V9.5V9.5V9.5V9.5V9.5V9.5V9.5V9.5M8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20V20M4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15V15" fill="#454652" id="Icon" />
-        </g>
-      </svg>
-    </div>
-    </div>
-    </div>
-    </div>
+  </section>
+
+</div>

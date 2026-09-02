@@ -1,5 +1,5 @@
 import { n as _defineProperty, t as _objectSpread2 } from "./objectSpread2-C_IE-bIJ.js";
-//#region node_modules/zone.js/fesm2015/zone.js
+//#region ../node_modules/zone.js/fesm2015/zone.js
 /**
 * @license Angular v<unknown>
 * (c) 2010-2025 Google LLC. https://angular.io/

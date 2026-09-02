@@ -1,75 +1,84 @@
-<div
-  class="flex flex-col items-center justify-center min-h-dvh w-full px-6"
-  style="background: rgb(248,249,250);"
->
-  <div class="w-full max-w-[390px] flex flex-col gap-6">
-    <div class="flex flex-col items-center gap-1">
-      <h1 class="text-[22px] font-bold text-[#000666]">Talamis</h1>
-      <p class="text-[14px] text-[#767683]">
-        {{ mode() === 'login' ? 'Welcome back' : 'Create your account' }}
+<div class="login-page-container">
+  <div class="login-wrapper">
+    
+    <!-- الترويسة والشعار -->
+    <div class="brand-header">
+      <h1 class="brand-title">Talamis</h1>
+      <p class="brand-subtitle">
+        {{ mode() === 'login' ? 'Welcome back! Please enter your details.' : 'Create your account to get started' }}
       </p>
     </div>
 
-    <form
-      class="flex flex-col gap-4 bg-white rounded-[24px] p-6 shadow-[0px_1px_3px_0px_rgba(0,0,0,0.05),0px_1px_2px_0px_rgba(0,0,0,0.1)]"
-      (ngSubmit)="submit()"
-    >
+    <!-- بطاقة النموذج بحجم مريح ومكبّر -->
+    <form class="login-card" (ngSubmit)="submit()">
+      
       @if (mode() === 'register') {
-        <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
-          Full name
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name</label>
           <input
+            id="fullName"
             type="text"
             name="fullName"
+            placeholder="John Doe"
             required
             [ngModel]="fullName()"
             (ngModelChange)="fullName.set($event)"
-            class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+            class="form-input"
           />
-        </label>
+        </div>
       }
 
-      <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
-        Email
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
         <input
+          id="email"
           type="email"
           name="email"
+          placeholder="name@example.com"
           required
           [ngModel]="email()"
           (ngModelChange)="email.set($event)"
-          class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+          class="form-input"
         />
-      </label>
+      </div>
 
-      <label class="flex flex-col gap-1 text-[13px] text-[#454652]">
-        Password
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
         <input
+          id="password"
           type="password"
           name="password"
+          placeholder="••••••••"
           required
           minlength="8"
           [ngModel]="password()"
           (ngModelChange)="password.set($event)"
-          class="rounded-[12px] border border-[#e1e3e4] px-3 py-2 text-[14px] outline-none focus:border-[#000666]"
+          class="form-input"
         />
-      </label>
+      </div>
 
+      <!-- تنبيه الخطأ إن وجد -->
       @if (errorMessage()) {
-        <p class="text-[13px] text-red-600">{{ errorMessage() }}</p>
+        <div class="error-alert">
+          {{ errorMessage() }}
+        </div>
       }
 
+      <!-- زر الدخول المكبّر -->
       <button
         type="submit"
         [disabled]="isSubmitting()"
-        class="rounded-[9999px] bg-[#000666] text-white text-[14px] font-medium py-3 disabled:opacity-50"
+        class="btn-submit"
       >
         {{ isSubmitting() ? 'Please wait…' : mode() === 'login' ? 'Log in' : 'Sign up' }}
       </button>
     </form>
 
+    <!-- زر التبديل السفلي -->
     <button
       type="button"
       (click)="toggleMode()"
-      class="text-[13px] text-[#767683] text-center"
+      class="btn-toggle-mode"
     >
       {{
         mode() === 'login'
@@ -77,5 +86,6 @@
           : 'Already have an account? Log in'
       }}
     </button>
+
   </div>
 </div>

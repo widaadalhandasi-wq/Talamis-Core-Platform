@@ -1,10 +1,11 @@
 import { n as _defineProperty, t as _objectSpread2 } from "./objectSpread2-C_IE-bIJ.js";
-import { $n as Output, Bt as computed, Dc as InjectionToken, Di as provideAppInitializer, Dl as ɵɵdefineInjectable, Ea as ɵɵcontentQuery, Ec as INTERNAL_APPLICATION_ERROR_HANDLER, Ei as performanceMarkFeature, En as ElementRef, Er as ViewContainerRef, Fn as Injectable, Hc as PendingTasksInternal, Ic as NgZone, In as Input, Jc as Version, Jo as ɵɵinvalidFactory, Lo as ɵɵinjectAttribute, Mi as publishNonCoreGlobalUtil, Mn as IS_HYDRATION_DOM_REUSE_ENABLED, Mr as afterNextRender, O as booleanAttribute, Oc as Injector, Ol as ɵɵdefineInjector, Ps as ɵɵsanitizeUrlOrResourceUrl, Qc as assertInInjectionContext, Sl as signal, Wc as RuntimeError, Wi as setClassMetadata, Wt as linkedSignal, X as input, Xo as ɵɵloadQuery, Yn as NgModuleFactory$1, Yo as ɵɵlistener, Yt as APP_BOOTSTRAP_LISTENER, _c as ENVIRONMENT_INITIALIZER, a as ContentChildren, an as ChangeDetectionStrategy, ao as ɵɵdefineService, bl as runInInjectionContext, cl as inject, cn as Component, dr as Service, et as maybeUnwrapDefaultExport, f as HostAttributeToken, fl as isStandalone, fn as Console, ft as reflectComponentType, gc as DestroyRef, gl as promiseWithResolvers, go as ɵɵelement, hc as DOCUMENT, ir as Renderer2, jl as ɵɵinject, jn as IS_ENABLED_BLOCKING_INITIAL_NAVIGATION, kn as HostListener, la as ɵɵNgOnChangesFeature, lc as _asyncToGenerator, ml as makeEnvironmentProviders, nl as effect, nn as Attribute, no as ɵɵdefineDirective, on as Compiler, oo as ɵɵdirectiveInject, pt as resourceFromSnapshots, qn as NgModule, qr as createEnvironmentInjector, qt as untracked, r as ChangeDetectorRef, rl as formatRuntimeError, ro as ɵɵdefineNgModule, tn as ApplicationRef, to as ɵɵdefineComponent, ul as isInjectable, vi as isNgModule, vl as provideEnvironmentInitializer, vs as ɵɵqueryRefresh, wn as Directive, xc as EventEmitter, ya as ɵɵattribute, yc as EnvironmentInjector, yi as isPromise } from "./core-C5zxX-bE.js";
-import { An as throwError, Ct as take, Dn as isObservable, En as EmptyError, In as EMPTY, Lt as catchError, Mn as from, Qn as Subject, Xt as filter, Zn as BehaviorSubject, b as switchMap, dn as concat, et as takeLast, g as takeUntil, hn as combineLatest, ir as pipe, jn as of, jt as concatMap, m as tap, mn as mergeMap, ot as finalize, pn as mergeAll, rr as Observable, rt as first, un as defer, ur as Subscription, vn as map, x as startWith } from "./esm5-ChK3bs0s.js";
-import { n as LOCATION_INITIALIZED, r as PlatformLocation } from "./_platform_location-chunk-L6n8Eds5.js";
-import { a as PlatformNavigation, c as LocationStrategy, i as PRECOMMIT_HANDLER_SUPPORTED, l as PathLocationStrategy, r as ViewportScroller, s as Location, t as NavigationAdapterForLocation } from "./common-CWJsY2Nd.js";
-import { P as HashLocationStrategy, s as Title } from "./platform-browser-BZZeP83R.js";
-//#region node_modules/@angular/router/fesm2022/_router-chunk.mjs
+import { Br as isInjectable, E as DOCUMENT, F as EnvironmentInjector, G as Injector, It as assertInInjectionContext, Jr as isStandalone, L as EventEmitter, Mn as formatRuntimeError, O as DestroyRef, Sr as inject, U as INTERNAL_APPLICATION_ERROR_HANDLER, Vi as signal, W as InjectionToken, _ as untracked, ai as makeEnvironmentProviders, bn as effect, c as computed, ca as ɵɵdefineInjector, ct as PendingTasksInternal, da as ɵɵinject, fi as promiseWithResolvers, ht as Version, j as ENVIRONMENT_INITIALIZER, mi as provideEnvironmentInitializer, p as linkedSignal, sa as ɵɵdefineInjectable, tt as NgZone, ut as RuntimeError, v as _asyncToGenerator, wi as runInInjectionContext } from "./_resource-chunk-ntJkpWmZ.js";
+import { Ai as setClassMetadata, Co as ɵɵinjectAttribute, Fn as NgModuleFactory$1, Fo as ɵɵlistener, Ft as APP_BOOTSTRAP_LISTENER, Ga as ɵɵdefineService, Gt as ChangeDetectionStrategy, Ha as ɵɵdefineDirective, Ht as Attribute, Io as ɵɵloadQuery, Jt as Component, Ka as ɵɵdirectiveInject, Kt as Compiler, Nn as NgModule, Nr as createEnvironmentInjector, O as booleanAttribute, Po as ɵɵinvalidFactory, Qt as Console, Sn as Input, Ua as ɵɵdefineNgModule, Va as ɵɵdefineComponent, Vt as ApplicationRef, Wn as Renderer2, X as input, Yi as ɵɵNgOnChangesFeature, Zn as Service, _n as IS_ENABLED_BLOCKING_INITIAL_NAVIGATION, a as ContentChildren, aa as ɵɵattribute, ai as isPromise, bs as ɵɵsanitizeUrlOrResourceUrl, et as maybeUnwrapDefaultExport, f as HostAttributeToken, fa as ɵɵcontentQuery, fi as performanceMarkFeature, fn as ElementRef, fr as ViewContainerRef, ft as reflectComponentType, hn as HostListener, ii as isNgModule, is as ɵɵqueryRefresh, no as ɵɵelement, pi as provideAppInitializer, pt as resourceFromSnapshots, r as ChangeDetectorRef, un as Directive, vi as publishNonCoreGlobalUtil, vn as IS_HYDRATION_DOM_REUSE_ENABLED, vr as afterNextRender, xn as Injectable, zn as Output } from "./core-DSxXFSSr.js";
+import { An as throwError, Ct as take, Dn as isObservable, En as EmptyError, In as EMPTY, Lt as catchError, Mn as from, Qn as Subject, Xt as filter, Zn as BehaviorSubject, b as switchMap, dn as concat, et as takeLast, g as takeUntil, hn as combineLatest, ir as pipe, jn as of, jt as concatMap, m as tap, mn as mergeMap, ot as finalize, pn as mergeAll, rr as Observable, rt as first, un as defer, ur as Subscription, vn as map, x as startWith } from "./esm5-P1D0zK7h.js";
+import { a as LOCATION_INITIALIZED, o as PlatformLocation } from "./_xhr-chunk-C3FtwZ9_.js";
+import { Mt as LocationStrategy, Pt as PathLocationStrategy, jt as Location, k as HashLocationStrategy, l as ViewportScroller, n as NavigationAdapterForLocation, v as PRECOMMIT_HANDLER_SUPPORTED, y as PlatformNavigation } from "./common-QsE-ZPlO.js";
+import { s as Title } from "./platform-browser-BA9Ecurx.js";
+//#region ../node_modules/@angular/router/fesm2022/_router-chunk.mjs
 /**
 * @license Angular v22.1.4
 * (c) 2010-2026 Google LLC. https://angular.dev/
@@ -3819,7 +3820,7 @@ function validateCommands(commands) {
 	}
 }
 //#endregion
-//#region node_modules/@angular/router/fesm2022/_router_module-chunk.mjs
+//#region ../node_modules/@angular/router/fesm2022/_router_module-chunk.mjs
 /**
 * @license Angular v22.1.4
 * (c) 2010-2026 Google LLC. https://angular.dev/
@@ -5308,7 +5309,7 @@ function provideRouterInitializer() {
 	}];
 }
 //#endregion
-//#region node_modules/@angular/router/fesm2022/router.mjs
+//#region ../node_modules/@angular/router/fesm2022/router.mjs
 /**
 * @license Angular v22.1.4
 * (c) 2010-2026 Google LLC. https://angular.dev/

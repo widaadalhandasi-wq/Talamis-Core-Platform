@@ -1,0 +1,172 @@
+/* حاوية الصفحة الكاملة */
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  padding: 32px 20px;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* الحاوية المتوسطة لتحديد العرض الأقصى المكبّر */
+.login-wrapper {
+  width: 100%;
+  max-width: 480px; /* تم تكبيرها من 390px إلى 480px لتناسب الشاشة */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* الترويسة والشعار */
+.brand-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.brand-title {
+  color: #000666;
+  font-size: 32px; /* خط بارز وكبير */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  color: #5c5e6b;
+  font-size: 16px;
+  margin: 0;
+}
+
+/* بطاقة النموذج */
+.login-card {
+  background-color: #ffffff;
+  padding: 40px 36px; /* مساحات داخلية واسعة وفخمة */
+  border-radius: 28px;
+  border: 1px solid #edf2f7;
+  box-shadow: 0px 10px 30px rgba(0, 6, 102, 0.07), 0px 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* مجموعة الحقل والتسمية */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #191c1d;
+}
+
+/* حقول الإدخال المكبّرة والمريحة */
+.form-input {
+  width: 100%;
+  padding: 14px 18px; /* ارتفاع مريح للكتابة */
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 16px;
+  outline: none;
+  background-color: #ffffff;
+  color: #191c1d;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:hover {
+  border-color: #cbd5e1;
+}
+
+.form-input:focus {
+  border-color: #000666;
+  box-shadow: 0 0 0 4px rgba(0, 6, 102, 0.1);
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+}
+
+/* تنبيه رسالة الخطأ */
+.error-alert {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.4;
+}
+
+/* زر تسجيل الدخول */
+.btn-submit {
+  width: 100%;
+  background-color: #000666;
+  color: #ffffff;
+  padding: 15px; /* زر كبير وواضح */
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+  box-shadow: 0 4px 14px rgba(0, 6, 102, 0.2);
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #000444;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 6, 102, 0.28);
+}
+
+.btn-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* زر التبديل السفلي (Sign up / Log in) */
+.btn-toggle-mode {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #5c5e6b;
+  cursor: pointer;
+  text-align: center;
+  padding: 6px;
+  transition: color 0.15s ease;
+}
+
+.btn-toggle-mode:hover {
+  color: #000666;
+  text-decoration: underline;
+}
+
+/* تحسين العرض على شاشات الجوال */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  
+  .brand-title {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,711 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.podcasts-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 1152px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ================= الرأس وفلتر التصنيفات ================= */
+.podcasts-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header-main-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+@media (min-width: 640px) {
+  .header-main-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.podcasts-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 36px;
+  color: #1a237e;
+  margin: 0;
+}
+
+.podcasts-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #454652;
+  margin: 0;
+}
+
+.episodes-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #454652;
+  background-color: #edeeef;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  align-self: flex-start;
+}
+
+.category-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.category-filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  background-color: #ffffff;
+  border: 1px solid #e1e3e4;
+  color: #454652;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.category-pill:hover {
+  background-color: #f1f3f4;
+  color: #000666;
+}
+
+.category-pill.active {
+  background-color: #000666;
+  border-color: #000666;
+  color: #ffffff;
+}
+
+/* ================= بطاقة المشغل الحالية Bento Card ================= */
+.now-playing-card {
+  background-color: #f8f9fa;
+  border-radius: 24px;
+  border: 1px solid #e1e3e4;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .now-playing-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+
+.cover-art-container {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+  .cover-art-container {
+    max-width: 320px;
+    height: 330px;
+    flex-shrink: 0;
+  }
+}
+
+.cover-art-inner {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, #000666 0%, #1a237e 50%, #006D37 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .cover-art-inner {
+    height: 100%;
+  }
+}
+
+.cover-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  z-index: 1;
+}
+
+.cover-icon {
+  font-size: 48px;
+}
+
+.cover-series-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.cover-speaker {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 6, 102, 0.85) 0%, rgba(0, 6, 102, 0) 70%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.now-playing-pill {
+  backdrop-filter: blur(6px);
+  background: rgba(248, 249, 250, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #6bfe9c;
+}
+
+.pulse-dot.active {
+  box-shadow: 0 0 8px #6bfe9c;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pill-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* ================= التفاصيل وأدوات التحكم ================= */
+.details-and-controls {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.tags-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.tag-level {
+  background-color: #e1e3e4;
+  color: #454652;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.tag-category {
+  background-color: #b8efce;
+  color: #002012;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.active-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0 0 6px 0;
+  line-height: 28px;
+}
+
+.active-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #454652;
+  margin: 0 0 20px 0;
+  line-height: 20px;
+}
+
+/* شكل الموجة الصوتية */
+.waveform-container {
+  background-color: #f3f4f5;
+  border-radius: 8px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.waveform-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+}
+
+.bar {
+  width: 6px;
+  border-radius: 9999px 9999px 0 0;
+  background-color: #e1e3e4;
+  transition: height 0.2s ease;
+}
+
+.bar.active {
+  background-color: #000666;
+}
+
+.bar-1 { height: 100%; }
+.bar-2 { height: 26px; }
+.bar-3 { height: 19px; }
+.bar-4 { height: 29px; }
+.bar-5 { height: 13px; }
+.bar-6 { height: 22px; }
+.bar-7 { height: 32px; }
+.bar-8 { height: 16px; }
+.bar-9 { height: 26px; }
+.bar-10 { height: 10px; }
+.bar-11 { height: 19px; }
+.bar-12 { height: 13px; }
+.bar-13 { height: 26px; }
+.bar-14 { height: 16px; }
+.bar-15 { height: 10px; }
+
+.bar.animated {
+  animation: wavePulse 1.2s infinite ease-in-out alternate;
+}
+
+@keyframes wavePulse {
+  0% { transform: scaleY(0.7); }
+  100% { transform: scaleY(1.3); }
+}
+
+/* أزرار المشغل */
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.time-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #454652;
+}
+
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-ctrl-action {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #454652;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-ctrl-action:hover {
+  background-color: #edeeef;
+  color: #000666;
+}
+
+.btn-play-main {
+  background-color: #000666;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease;
+}
+
+.btn-play-main:hover {
+  transform: scale(1.05);
+}
+
+/* ⭐ زر التوقف التام */
+.btn-ctrl-stop {
+  background-color: #feefe3;
+  border: 1px solid #fad2cf;
+  color: #c5221f;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-ctrl-stop:hover {
+  background-color: #fce8e6;
+  transform: scale(1.05);
+}
+
+/* شريط السرعة والنص */
+.speed-and-transcript-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e1e3e4;
+}
+
+.speed-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.speed-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #767683;
+  margin-right: 4px;
+}
+
+.btn-speed {
+  background-color: #ffffff;
+  border: 1px solid #e1e3e4;
+  color: #454652;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-speed.active {
+  background-color: #000666;
+  border-color: #000666;
+  color: #ffffff;
+}
+
+.btn-toggle-transcript {
+  background-color: #f6fbf8;
+  border: 1px solid #b8efce;
+  color: #006D37;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* صندوق النص المتزامن */
+.transcript-box {
+  margin-top: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e1e3e4;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.transcript-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.transcript-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #767683;
+}
+
+.transcript-counter {
+  font-size: 11px;
+  color: #9aa0a6;
+}
+
+.transcript-body {
+  max-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.transcript-line {
+  font-size: 13px;
+  line-height: 20px;
+  color: #454652;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0;
+  transition: all 0.15s ease;
+}
+
+.transcript-line:hover {
+  background-color: #f8f9fa;
+}
+
+.transcript-line.active-line {
+  background-color: #e6f4ea;
+  color: #002012;
+  font-weight: 600;
+  border-left: 3px solid #006D37;
+}
+
+/* ================= شبكة الحلقات القادمة ================= */
+.episodes-grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+}
+
+.episodes-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #006d37;
+}
+
+.episodes-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .episodes-list {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+.episode-item-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e1e3e4;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.episode-item-card:hover {
+  transform: translateY(-2px);
+  border-color: #006d37;
+  box-shadow: 0px 6px 16px rgba(0, 109, 55, 0.08);
+}
+
+.episode-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-avatar {
+  background-color: #edeeef;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-category {
+  background-color: #f1f3f4;
+  color: #1a237e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.badge-duration {
+  background-color: #e7e8e9;
+  color: #454652;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.episode-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.episode-title-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #191c1d;
+  margin: 0;
+  line-height: 24px;
+}
+
+.episode-desc-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #454652;
+  margin: 0;
+  line-height: 18px;
+}
+
+.episode-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #e1e3e4;
+  padding-top: 12px;
+}
+
+.badge-level {
+  background-color: rgba(107, 254, 156, 0.2);
+  color: #006d37;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.card-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-play-circle {
+  background-color: #e7e8e9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-play-circle:hover {
+  background-color: #000666;
+}
+
+.btn-play-circle:hover svg path {
+  fill: #ffffff;
+}
+
+.btn-stop-circle {
+  background-color: #feefe3;
+  border: 1px solid #fad2cf;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-stop-circle:hover {
+  background-color: #fce8e6;
+}

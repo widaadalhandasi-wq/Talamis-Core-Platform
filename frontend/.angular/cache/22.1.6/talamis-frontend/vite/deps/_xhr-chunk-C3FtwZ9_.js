@@ -1,6 +1,7 @@
 import { n as _defineProperty } from "./objectSpread2-C_IE-bIJ.js";
-import { Dc as InjectionToken, Dl as ɵɵdefineInjectable, Fn as Injectable, Wi as setClassMetadata, cl as inject, hc as DOCUMENT } from "./core-C5zxX-bE.js";
-//#region node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs
+import { E as DOCUMENT, Sr as inject, W as InjectionToken, da as ɵɵinject, sa as ɵɵdefineInjectable } from "./_resource-chunk-ntJkpWmZ.js";
+import { Ai as setClassMetadata, Ga as ɵɵdefineService, Zn as Service, xn as Injectable } from "./core-DSxXFSSr.js";
+//#region ../node_modules/@angular/common/fesm2022/_platform_location-chunk.mjs
 /**
 * @license Angular v22.1.4
 * (c) 2010-2026 Google LLC. https://angular.dev/
@@ -125,4 +126,68 @@ _defineProperty(BrowserPlatformLocation, "ɵprov", /* @__PURE__ */ ɵɵdefineInj
 	}], () => [], null);
 })();
 //#endregion
-export { setRootDomAdapter as a, getDOM as i, LOCATION_INITIALIZED as n, PlatformLocation as r, DomAdapter as t };
+//#region ../node_modules/@angular/common/fesm2022/_xhr-chunk.mjs
+/**
+* @license Angular v22.1.4
+* (c) 2010-2026 Google LLC. https://angular.dev/
+* License: MIT
+*/
+var _BrowserXhr;
+var _XhrFactory;
+function parseCookieValue(cookieStr, name) {
+	name = encodeURIComponent(name);
+	for (const cookie of cookieStr.split(";")) {
+		const eqIndex = cookie.indexOf("=");
+		const [cookieName, cookieValue] = eqIndex == -1 ? [cookie, ""] : [cookie.slice(0, eqIndex), cookie.slice(eqIndex + 1)];
+		if (cookieName.trim() !== name) continue;
+		let value = cookieValue;
+		try {
+			value = decodeURIComponent(cookieValue);
+		} catch (_unused) {}
+		if (value.length > 1 && value[0] === "\"" && value[value.length - 1] === "\"") value = value.slice(1, -1);
+		return value;
+	}
+	return null;
+}
+var BrowserXhr = class {
+	build() {
+		return new XMLHttpRequest();
+	}
+};
+_BrowserXhr = BrowserXhr;
+_defineProperty(BrowserXhr, "ɵfac", function BrowserXhr_Factory(__ngFactoryType__) {
+	return new (__ngFactoryType__ || _BrowserXhr)();
+});
+_defineProperty(BrowserXhr, "ɵprov", /* @__PURE__ */ ɵɵdefineService({
+	token: _BrowserXhr,
+	factory: _BrowserXhr.ɵfac
+}));
+(() => {
+	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(BrowserXhr, [{ type: Service }], null, null);
+})();
+var XhrFactory = class {};
+_XhrFactory = XhrFactory;
+_defineProperty(XhrFactory, "ɵfac", function XhrFactory_Factory(__ngFactoryType__) {
+	return new (__ngFactoryType__ || _XhrFactory)();
+});
+_defineProperty(XhrFactory, "ɵprov", /* @__PURE__ */ ɵɵdefineInjectable({
+	token: _XhrFactory,
+	factory: function XhrFactory_Factory(__ngFactoryType__) {
+		let __ngConditionalFactory__ = null;
+		if (__ngFactoryType__) __ngConditionalFactory__ = new (__ngFactoryType__ || _XhrFactory)();
+		else __ngConditionalFactory__ = ɵɵinject(BrowserXhr);
+		return __ngConditionalFactory__;
+	},
+	providedIn: "root"
+}));
+(() => {
+	(typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(XhrFactory, [{
+		type: Injectable,
+		args: [{
+			providedIn: "root",
+			useExisting: BrowserXhr
+		}]
+	}], null, null);
+})();
+//#endregion
+export { LOCATION_INITIALIZED as a, setRootDomAdapter as c, DomAdapter as i, parseCookieValue as n, PlatformLocation as o, BrowserPlatformLocation as r, getDOM as s, XhrFactory as t };
